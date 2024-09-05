@@ -1,6 +1,5 @@
 import { BETTING_CONTRACT_ABI } from "@/abi/BETTING_CONTRACT_ABI";
 import { USDC_ABI } from "@/abi/USDC_ABI";
-import { BETTING_CONTRACT_ADDRESS, USDC_ADDRESS } from "@/config/addresses";
 import { getXmtpFrameMessage } from "@coinbase/onchainkit/xmtp";
 import { NextRequest, NextResponse } from "next/server";
 import { Address, encodeFunctionData, parseUnits } from "viem";
@@ -54,11 +53,11 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const approvalData = encodeFunctionData({
     abi: USDC_ABI,
     functionName: "approve",
-    args: [BETTING_CONTRACT_ADDRESS, approvePriceInUsdc],
+    args: [addresses.BETTING_CONTRACT_ADDRESS, approvePriceInUsdc],
   });
 
   const approvalTransaction = {
-    to: USDC_ADDRESS,
+    to: addresses.USDC_TOKEN_ADDRESS,
     data: approvalData,
   };
 
@@ -69,7 +68,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   });
 
   const betTransaction = {
-    to: BETTING_CONTRACT_ADDRESS,
+    to: addresses.BETTING_CONTRACT_ADDRESS,
     data: betData,
   };
 
