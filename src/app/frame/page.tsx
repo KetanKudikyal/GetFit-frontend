@@ -14,7 +14,7 @@ const frameMetadata = getFrameMetadata({
             action: "tx",
             // Below buttons are 2 route urls that will be added in the next steps.
             // Target will send back info about the transaction
-            target: `${process.env.NEXT_PUBLIC_BASE_URL}/api/transaction`,
+            target: `${process.env.NEXT_PUBLIC_BASE_URL}/api/bundled-transaction`,
             // postUrl will send back a transaction success screen
             postUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/api/transaction-success`,
         },
