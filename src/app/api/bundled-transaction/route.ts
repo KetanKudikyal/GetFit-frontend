@@ -8,6 +8,9 @@ import { encodeFunctionData, parseUnits } from "viem";
 async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const body = await req.json();
   const state = body.untrustedData.state;
+
+  const chain = state.chain;
+
   delete body.untrustedData.state;
 
   const { isValid } = await getXmtpFrameMessage(body);
