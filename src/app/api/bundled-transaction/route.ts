@@ -13,7 +13,7 @@ type AddressMap = {
   };
 };
 
-export const ADDRESS_MAP: AddressMap = {
+const ADDRESS_MAP: AddressMap = {
   [morphHolesky.id]: {
     USDC_TOKEN_ADDRESS: "0x94c17DD37ED3Ca85764b35BfD4d1CCc543b1bE3E",
     BETTING_CONTRACT_ADDRESS: "0x14097485976CB545d743452f66604bEAC141Cc98",
