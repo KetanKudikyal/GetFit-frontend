@@ -34,7 +34,11 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
 
   const addresses = getAddressesForChain(chain ?? morphHolesky.id);
 
-  console.log("addresses", addresses);
+  console.log(
+    "addresses",
+    addresses.BETTING_CONTRACT_ADDRESS,
+    addresses.USDC_TOKEN_ADDRESS
+  );
 
   delete body.untrustedData.state;
 
