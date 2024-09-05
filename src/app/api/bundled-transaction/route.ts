@@ -32,7 +32,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
 
   const chain = state.chain;
 
-  const addresses = getAddressesForChain(chain.id);
+  const addresses = getAddressesForChain(chain ?? morphHolesky.id);
 
   console.log("addresses", addresses);
 
