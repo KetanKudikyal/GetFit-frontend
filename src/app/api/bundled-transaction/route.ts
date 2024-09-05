@@ -24,7 +24,7 @@ const ADDRESS_MAP: AddressMap = {
   },
 };
 
-export const getAddressesForChain = (chainId: number) => ADDRESS_MAP[chainId];
+const getAddressesForChain = (chainId: number) => ADDRESS_MAP[chainId];
 
 async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const body = await req.json();
