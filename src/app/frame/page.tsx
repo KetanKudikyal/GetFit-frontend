@@ -9,7 +9,7 @@ const frameMetadata = getFrameMetadata({
     buttons: [
         {
             // Whatever label you want your first button to have
-            label: "Make transaction",
+            label: "Place bet",
             // Required 'tx' action for a transaction frame
             action: "tx",
             // Below buttons are 2 route urls that will be added in the next steps.
