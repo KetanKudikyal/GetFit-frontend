@@ -101,10 +101,8 @@ export const Frame = ({
             style={styles.imageFrameA}
           >
             <Image
-              src={
-                "https://pbs.twimg.com/profile_images/1787467144914931712/3uIItkW0_400x400.jpg"
-              }
-              width={260}
+              src={"/floyd.png"}
+              width={290}
               height={170}
               className="mx-auto"
               alt={title}
