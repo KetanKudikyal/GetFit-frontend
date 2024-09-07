@@ -104,6 +104,7 @@ export const MessageItem: React.FC<MessageItemProps> = ({ msg, index, client, in
     const { data: walletClient } = useWalletClient()
     const { smartAccount } = useGlobalStore()
 
+    const [txHash, setTxHash] = useState('')
     const provider = useEthersProvider()
     const signer = useEthersSigner()
     const [isLoading, setIsLoading] = useState(true);
@@ -178,6 +179,7 @@ export const MessageItem: React.FC<MessageItemProps> = ({ msg, index, client, in
                             paymasterServiceData: { mode: PaymasterMode.SPONSORED },
                         });
                         const { transactionHash } = await bundleTransaction.waitForTxHash();
+                        setTxHash(transactionHash)
                         const buttonPostUrl =
                             frameMetadata.extractedTags["fc:frame:button:1:post_url"];
                         const completeTransactionMetadata = await framesClient.proxy.post(
@@ -199,11 +201,17 @@ export const MessageItem: React.FC<MessageItemProps> = ({ msg, index, client, in
                 );
                 setFrameMetadata(updatedFrameMetadata);
             } else if (action === "post_redirect") {
-                const { redirectedTo } = await framesClient.proxy.postRedirect(
-                    postUrl,
-                    payload,
-                );
-                window.open(redirectedTo, "_blank");
+                if (chainId === spicy.id) {
+                    window.open('https://spicy.io/tx/' + txHash, "_blank");
+                }
+                if (chainId === morphHolesky.id) {
+                    window.open('https://explorer-holesky.morphl2.io/tx/' + txHash, "_blank");
+                }
+                // const { redirectedTo } = await framesClient.proxy.postRedirect(
+                //     postUrl,
+                //     payload,
+                // );
+                // window.open(redirectedTo, "_blank");
             } else if (action === "link" && button?.target) {
                 window.open(button.target, "_blank");
             }
@@ -259,6 +267,7 @@ export const MessageItem: React.FC<MessageItemProps> = ({ msg, index, client, in
                         onTextInputChange={() => {
                             console.log("onTextInputChange");
                         }}
+                        txHash={txHash}
                         frameUrl={frameMetadata?.url}
                     />
                 </>

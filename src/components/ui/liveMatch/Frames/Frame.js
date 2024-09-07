@@ -18,6 +18,7 @@ export const Frame = ({
   textInput,
   onTextInputChange,
   frameUrl,
+  txHash,
 }) => {
   const { chainId } = useAccount();
   const styles = {
@@ -80,9 +81,7 @@ export const Frame = ({
             style={styles.imageFrameA}
           >
             <Image
-              src={
-                "https://www.chiliz.com/wp-content/uploads/2023/02/chiliz-logo-v3.svg"
-              }
+              src={"/floyd.png"}
               alt={title}
               width={260}
               height={170}
